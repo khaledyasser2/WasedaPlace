@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
-  has_secure_password
+  attr_accessor :remember_token, :activation_token, :reset_token  
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true,
+            length: {maximum:255}
+  validates :name, presence: true, length: {maximum: 50}
+  validates :password, length: {minimum:6}, presence:true, allow_nil: true
 end

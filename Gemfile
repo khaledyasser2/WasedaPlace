@@ -11,6 +11,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "bootsnap", require: false
+gem "bcrypt"
 
 # Use Sass to process CSS
 # gem "sassc-rails"
