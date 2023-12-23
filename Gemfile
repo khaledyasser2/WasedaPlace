@@ -19,6 +19,12 @@ gem "bcrypt"
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   #gem "sqlite3"
+  gem "rspec-rails"
+  gem 'factory_bot_rails'  
+end
+
+group :test do
+  gem "database_cleaner"
 end
 
 group :development do
