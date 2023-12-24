@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true,
             length: {maximum:255}
   validates :name, presence: true, length: {maximum: 50}
-  validates :password, length: {minimum:6}, presence:true, allow_nil: true
+  validates :password, length: {minimum:6}, presence:true, allow_nil: false
 
   before_save do
     self.email.downcase!
