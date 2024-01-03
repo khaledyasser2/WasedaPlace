@@ -26,6 +26,16 @@ RSpec.describe "AccountManagements", type: :system do
 
     #testing redirect
     expect(page).to have_current_path user_path(User.last)
+  end
 
+  scenario "user logs into account" do
+    user=FactoryBot.create(:user, email: "example@gmail.com")
+    visit root_path
+    click_on "Log in"
+
+    fill_in "Email", with: "example@gmail.com"
+    fill_in "Password", with: "password"
+    click_on "Log in", id: "user_login"
+    
   end
 end
