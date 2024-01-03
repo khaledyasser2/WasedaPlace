@@ -25,6 +25,7 @@ end
 
 group :test do
   gem "database_cleaner"
+  gem "launchy"
 end
 
 group :development do

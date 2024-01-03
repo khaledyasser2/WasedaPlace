@@ -23,5 +23,9 @@ RSpec.describe "AccountManagements", type: :system do
       expect(User.last[:password]).to eq nil #since it's obscured
       expect(User.last[:password_confirmation]).to eq nil
     end
+
+    #testing redirect
+    expect(page).to have_current_path user_path(User.last)
+
   end
 end
