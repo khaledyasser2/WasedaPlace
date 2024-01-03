@@ -15,6 +15,5 @@ RSpec.describe User, type: :model do
     user2=FactoryBot.create(:user, email: "ABC@GMAIl.Com")
 
     expect(user2).to_not be_valid
-
   end
 end
