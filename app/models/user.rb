@@ -10,4 +10,8 @@ class User < ApplicationRecord
     self.email.downcase!
   end
 
+  def login(user)
+    session[:user_id]=user.id
+  end
+
 end
