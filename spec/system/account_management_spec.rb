@@ -36,6 +36,10 @@ RSpec.describe "AccountManagements", type: :system do
     fill_in "Email", with: "example@gmail.com"
     fill_in "Password", with: "password"
     click_on "Log in", id: "user_login"
-    
+
+    aggregate_failures do
+      
+      #expect(page).to have_current_path
+    end
   end
 end
