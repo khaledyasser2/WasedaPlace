@@ -9,6 +9,4 @@ class User < ApplicationRecord
   before_save do
     self.email.downcase!
   end
-
-
 end
