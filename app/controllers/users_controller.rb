@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
+      #flash.now[:danger] = @user.errors.messages.join(" | ")
       render "new", status: :unprocessable_entity
     end
   end

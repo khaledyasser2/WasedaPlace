@@ -38,9 +38,18 @@ RSpec.describe "AccountManagements", type: :system do
       fill_in "Email", with: "jojo"
       fill_in "Password", with: "asd"
       fill_in "Password confirmation", with: "asdf"
-      
       click_on "Create my account"
-      pending
+      
+      expect(page).to have_selector("div", class:"field_with_errors")
+
+      fill_in "Email", with: "jojo@gmail.com"
+      click_on "Create my account"
+
+      expect(page).to have_current_path user_path(signup_path)
+      
+      fill_in "Password", with: "asd"
+      click_on "Create my account"
+      save_and_open_page
     end
   end
 
@@ -70,7 +79,7 @@ RSpec.describe "AccountManagements", type: :system do
 
       aggregate_failures do
         expect(page).to have_current_path login_path
-        #save_and_open_page
+        expect(page).to have_selector("div", class:"alert alert-danger")
         expect(page).to have_text("Invalid email/password combination")
       end
     end
