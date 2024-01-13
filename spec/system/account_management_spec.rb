@@ -45,11 +45,13 @@ RSpec.describe "AccountManagements", type: :system do
       fill_in "Email", with: "jojo@gmail.com"
       click_on "Create my account"
 
-      expect(page).to have_current_path user_path(signup_path)
+      expect(page).to have_current_path users_path
       
       fill_in "Password", with: "asd"
+      fill_in "Password confirmation", with: "asd"
       click_on "Create my account"
-      save_and_open_page
+      
+      expect(page).to have_current_path users_path
     end
   end
 
