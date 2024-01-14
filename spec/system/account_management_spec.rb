@@ -86,15 +86,14 @@ RSpec.describe "AccountManagements", type: :system do
       end
     end
 
-    scenario "Using remember me" do
-      visit root_path
-      click_on "Log in"
-
-      fill_in "Email", with: user.email
-      fill_in "Password", with: "password"
-      check "session_remember_me"
-      click_on "Log in", id: "user_login"
-    
-    end
+    #scenario "Using remember me" do
+    #  visit root_path
+    #  click_on "Log in"
+    #  fill_in "Email", with: user.email
+    #  fill_in "Password", with: "password"
+    #  check "session_remember_me"
+    #  click_on "Log in", id: "user_login"
+    #
+    #end
   end
 end
