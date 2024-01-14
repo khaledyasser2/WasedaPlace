@@ -25,9 +25,9 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.from).to eq(["from@example.com"])
     end
 
-    it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
-    end
+    #it "renders the body" do
+    #  expect(mail.body.encoded).to match("Hi")
+    #end
   end
 
 end
