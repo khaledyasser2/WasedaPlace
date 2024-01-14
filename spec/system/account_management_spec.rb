@@ -56,18 +56,18 @@ RSpec.describe "AccountManagements", type: :system do
   end
 
   feature "logging in" do
-    let(:user) { FactoryBot.create(:user, email: "example@gmail.com") }
-
+    let(:user) { FactoryBot.create(:user) }
+    
     scenario "login attempt with right credentials" do
       visit root_path
       click_on "Log in"
 
-      fill_in "Email", with: "example@gmail.com"
+      fill_in "Email", with: user.email
       fill_in "Password", with: "password"
       click_on "Log in", id: "user_login"
 
       aggregate_failures do
-        expect(page).to have_current_path user_path(User.last)
+        expect(page).to have_current_path user_path(user)
       end
     end
 
@@ -84,6 +84,17 @@ RSpec.describe "AccountManagements", type: :system do
         expect(page).to have_selector("div", class:"alert alert-danger")
         expect(page).to have_text("Invalid email/password combination")
       end
+    end
+
+    scenario "Using remember me" do
+      visit root_path
+      click_on "Log in"
+
+      fill_in "Email", with: user.email
+      fill_in "Password", with: "password"
+      check "session_remember_me"
+      click_on "Log in", id: "user_login"
+    
     end
   end
 end
