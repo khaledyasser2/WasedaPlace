@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :password, length: {minimum:6}, presence:true, allow_nil: false
   has_secure_password
 
+  before_save :create_activation_digest
+
   before_save do
     self.email.downcase!
   end
@@ -24,12 +26,21 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(self.remember_token))
     remember_digest
   end
-
+  
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil? BCrypt::Password.new(digest).is_password?(token)
+  end
+  
   def session_token
     remember_digest || remember
   end
 
-  def authenticated?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
-  end
+  private
+  
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
+    
 end

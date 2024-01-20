@@ -12,7 +12,7 @@ module SessionsHelper
       user = User.find_by(id: cookies.encrypted[:user_id])
       if user&.authenticated?(:remember, cookies[:remember_token])
         log_in user
-        @curent_user=user
+        @current_user=user
       end
     end
   end
@@ -27,7 +27,7 @@ module SessionsHelper
 
   def log_out(user)
     reset_session
-    @curent_user = nil
+    @current_user = nil
   end
   
 end
