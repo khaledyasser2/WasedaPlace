@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true,
             length: {maximum:255}
   validates :name, presence: true, length: {maximum: 50}
-  validates :password, length: {minimum:6}, presence:true, allow_nil: false
+  #validates :password, length: {minimum:6}, presence:true, allow_nil: false
   has_secure_password
 
   before_save :create_activation_digest
@@ -29,7 +29,8 @@ class User < ApplicationRecord
   
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
-    return false if digest.nil? BCrypt::Password.new(digest).is_password?(token)
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
   
   def session_token

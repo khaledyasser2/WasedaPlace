@@ -19,15 +19,21 @@ RSpec.describe "AccountManagements", type: :system do
       click_on "Create my account"
 
       new_user = User.last
+      p new_user
+      new_user.save!
       aggregate_failures do
         expect(User.count).to equal n_users+1
         expect(new_user[:name]).to eq "jojo"
         expect(new_user[:password]).to eq nil #since it's obscured
         expect(new_user[:password_confirmation]).to eq nil
         expect(new_user[:activated]).to eq false
+        expect(new_user.authenticated?(:activation, "")).to eq false
       end
       #testing redirect
       expect(page).to have_current_path root_path
+
+      visit edit_account_activation_url(new_user.activation_token, email: new_user.email)
+      expect(page).to have_current_path new_user
     end
 
     scenario "user registers account with invalid info" do
