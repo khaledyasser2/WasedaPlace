@@ -19,6 +19,7 @@ RSpec.describe "AccountManagements", type: :system do
       click_on "Create my account"
 
       new_user = User.last
+      p new_user.password
       p new_user
       new_user.save!
       aggregate_failures do
