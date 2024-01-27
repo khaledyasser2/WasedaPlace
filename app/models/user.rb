@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :password, length: {minimum:6}, presence:true, allow_nil: false
   has_secure_password
 
-  before_save :create_activation_digest
+  before_create :create_activation_digest
 
   before_save do
     self.email.downcase!
