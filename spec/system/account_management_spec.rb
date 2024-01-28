@@ -21,7 +21,10 @@ RSpec.describe "AccountManagements", type: :system do
       new_user=User.last
       token=User.new_token
       digest=User.digest(token)
-      new_user.update(activation_token: token, activation_digest: digest)
+      
+      new_user.activation_token=token
+      new_user.update_columns(activation_digest: digest)
+      
       aggregate_failures do
         expect(User.count).to equal n_users+1
         expect(new_user[:name]).to eq "jojo"
@@ -36,7 +39,7 @@ RSpec.describe "AccountManagements", type: :system do
       expect(page).to have_current_path root_path
       
       visit edit_account_activation_url(new_user.activation_token, email: new_user.email, only_path: true)
-      expect(page).to have_current_path users_path(new_user)
+      expect(page).to have_current_path user_path(new_user)
     end
 
     scenario "user registers account with invalid info" do
