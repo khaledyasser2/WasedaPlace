@@ -99,14 +99,28 @@ RSpec.describe "AccountManagements", type: :system do
       end
     end
 
-    #scenario "Using remember me" do
-    #  visit root_path
-    #  click_on "Log in"
-    #  fill_in "Email", with: user.email
-    #  fill_in "Password", with: "password"
-    #  check "session_remember_me"
-    #  click_on "Log in", id: "user_login"
-    #
-    #end
+    scenario "Not using remember me" do
+      visit root_path
+      click_on "Log in"
+      fill_in "Email", with: user.email
+      fill_in "Password", with: "password"
+      #check "session_remember_me"
+      click_on "Log in", id: "user_login"
+      Capybara.reset_sessions!
+      visit root_path
+      expect(page).to have_current_path root_path
+    end
+    
+    scenario "Using remember me" do
+      visit root_path
+      click_on "Log in"
+      fill_in "Email", with: user.email
+      fill_in "Password", with: "password"
+      check "session_remember_me"
+      click_on "Log in", id: "user_login"
+      Capybara.reset_sessions!
+      visit root_path
+      expect(page).to have_current_path user_path(user)
+    end
   end
 end
