@@ -4,6 +4,7 @@ class User < ApplicationRecord
             length: {maximum:255}
   validates :name, presence: true, length: {maximum: 50}
   validates :password, length: {minimum:6}, presence:true, allow_nil: false
+  has_many :bookings
   has_secure_password
 
   before_create :create_activation_digest
