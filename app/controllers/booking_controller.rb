@@ -11,24 +11,27 @@ class BookingController < ApplicationController
 private
 
   def process_schedules_for_availability(schedules)
-    parsed = schedules.map { |s| {name: s["b"], day: s["i"][0]&.dig("d"), period: s["i"][0]&.dig("p"), room: s["i"][0]&.dig("l") } }
-    days=[-1] + (1..6).to_a
-    periods=(1..7).to_a
+  
     buildings=["51","52","53","54","55","56","57","58","59","60","61","62","63","65","66"]
-    
     rooms=[101, 102, 103, 104, 201, 202, 203, 204, 301, 302, 303, 304, 401, 402, 403, 404]
-    
     locations = buildings.product(rooms).map { |b, r| "#{b}-#{r}" }
-    combinations = days.product(periods, locations).map do |day, period, location|
-      { day: day, period: period, location: location }
+    # p locations
+    
+    data = ([-1] + (1..6).to_a).each_with_object({}) do |day, hash|
+      hash[day] = (1..8).each_with_object({}) do |location, inner_hash|
+        inner_hash[location] = locations.each_with_object({}) { |location, deepest_hash| deepest_hash[location] = "x" }
+      end
     end
-
-    # available = combinations.select do |combo|
-    #   parsed.none? { |course| course[:day] == combo[:day] && course[:period] == combo[:period] && course[:location] == combo[:location] }
-    # end
-    # debugger
+    
+    debugger
+    # parsed = schedules.map { |s| {name: s["b"], day: s["i"][0]&.dig("d"), period: s["i"][0]&.dig("p"), room: s["i"][0]&.dig("l") } }
+    # data = ([-1] + (1..6).to_a).map { |a| [a=>{}] }.flatten
     #
-    # return available
+    # schedules.each do |s|
+    # end
+    # combinations = days.product(periods, locations).map do |day, period, location|
+    #   { day: day, period: period, location: location }
+    # end
   end
 
   def read_all_json_from_directory(directory_path)
@@ -42,4 +45,5 @@ private
     end
     data_list.flatten
   end
+  
 end
