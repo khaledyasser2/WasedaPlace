@@ -21,7 +21,16 @@ private
     
     schedules.each do |s|
       begin
-        data[s["i"][0]&.dig("d")][s["i"][0]&.dig("p")][s["i"][0]&.dig("l")] =s["b"]
+        if s["i"][0]&.dig("p") > 8
+          tens=s["i"][0]&.dig("p")/10
+          ones=s["i"][0]&.dig("p")%10
+          (tens..ones).each do |period|
+            data[s["i"][0]&.dig("d")][period][s["i"][0]&.dig("l")] =s["b"]
+          end
+          # debugger
+        else
+          data[s["i"][0]&.dig("d")][s["i"][0]&.dig("p")][s["i"][0]&.dig("l")] =s["b"]
+        end
       rescue
         begin
           data[s["i"][0]&.dig("d")][s["i"][0]&.dig("p")]={}
