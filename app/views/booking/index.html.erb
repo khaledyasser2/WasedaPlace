@@ -1,1 +1,19 @@
-hi
+<h1>Select Date and Period</h1>
+<%= form_tag("/booking", method: "get") do %>
+  <div>
+    <label for="date">Date:</label>
+    <%= select_tag :date, options_for_select(@days), include_blank: true %>
+  </div>
+  <div>
+    <label for="period">Period:</label>
+    <%= select_tag :period, options_for_select(@periods), include_blank: true %>
+  </div>
+  <button type="submit">Submit</button>
+<% end %>
+
+<h2>Available Rooms</h2>
+<% if @available_rooms.any? %>
+  <% @available_rooms.each do |room| %>
+    <p><%= room[0] %> -<button>book</button> </p>
+  <% end %>
+<% end %>
