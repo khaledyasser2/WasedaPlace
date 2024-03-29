@@ -5,7 +5,8 @@ class BookingController < ApplicationController
     # file_path = Rails.root.join('public', 'data', 'ART.json')
     # class_schedules = JSON.parse(File.read(file_path))
     class_schedules=read_all_json_from_directory(Rails.root.join('public', 'data'))
-    @available_slots = process_schedules_for_availability(class_schedules)
+    @taken_timeslots = process_schedules_for_availability(class_schedules)
+    debugger
   end
 
 private
@@ -41,7 +42,7 @@ private
         end
       end
     end
-    debugger 
+    return data
   end
 
   def read_all_json_from_directory(directory_path)

@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_19_214927) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id"
     t.date "date", null: false
+    t.integer "period", null: false
     t.string "room_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
