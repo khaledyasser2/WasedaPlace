@@ -17,6 +17,9 @@
     <p><%= room[0] %> -
     <%= form_tag booking_index_path, method: :post do %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :room, room[0] %>
+      <%= hidden_field_tag :period, @selected[:period] %>
+      <%= hidden_field_tag :date, @selected[:date] %>
       <%= submit_tag "book" %>
     <% end %>
     </p>

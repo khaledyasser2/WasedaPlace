@@ -12,15 +12,26 @@ class BookingController < ApplicationController
     @available_rooms=[]
     if search_params?
       @available_rooms=@taken_timeslots[day_map[params[:date]]][params[:period].to_i]
+      @selected={date: params[:date], period: params[:period]}
     end
   end
 
   def create
-    debugger
+    @user=User.find(session[:user_id])
+    booking=Booking.create(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
   end
 
 private
 
+  def next_weekday(start_day)
+    weekdays = { "Monday" => 1, "Tuesday" => 2, "Wednesday" => 3, "Thursday" => 4, "Friday" => 5 }
+    start_day_int = weekdays[start_day]
+    today = Date.today
+    diff = start_day_int - today.wday
+    diff += 7 if diff < 0
+    today + diff
+  end
+  
   def search_params?
     params.key?(:date) and params.key?(:period)
   end
