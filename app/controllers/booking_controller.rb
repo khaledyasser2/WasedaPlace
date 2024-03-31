@@ -10,13 +10,24 @@ class BookingController < ApplicationController
     @periods=[1,2,3,4,5,6,7]
     @taken_timeslots = process_schedules_for_availability(class_schedules)
     @available_rooms=[]
-    if not params.empty?
+    if search_params?
       @available_rooms=@taken_timeslots[day_map[params[:date]]][params[:period].to_i]
     end
-    # debugger
+  end
+
+  def create
+    debugger
   end
 
 private
+
+  def search_params?
+    params.key?(:date) and params.key?(:period)
+  end
+
+  def booking_params
+    params.require(:booking).permit(:date, :period, :room_number)  # Replace with allowed booking attributes
+  end
 
   def process_schedules_for_availability(schedules)
     data = ([-1] + (1..6).to_a).each_with_object({}) do |day, hash|
