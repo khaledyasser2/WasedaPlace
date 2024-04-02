@@ -10,8 +10,11 @@ class BookingController < ApplicationController
     @periods=[1,2,3,4,5,6,7]
     @taken_timeslots = process_schedules_for_availability(class_schedules)
     @available_rooms=[]
+    # debugger
     if search_params?
-      @available_rooms=@taken_timeslots[day_map[params[:date]]][params[:period].to_i]
+      @available_rooms=@all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].keys).to_a
+      # @available_rooms=@taken_timeslots[day_map[params[:date]]][params[:period].to_i].keys
+      # debugger
       @selected={date: params[:date], period: params[:period]}
     end
   end
@@ -54,6 +57,8 @@ private
     end
 
     dropped=0
+
+    @all_rooms=Set.new
     
     schedules.each do |s|
       begin
@@ -65,11 +70,14 @@ private
           end
           # debugger
         else
+          @all_rooms.add(s["i"][0]&.dig("l"))
           data[s["i"][0]&.dig("d")][s["i"][0]&.dig("p")][s["i"][0]&.dig("l")] =s["b"]
         end
       rescue
         begin
           data[s["i"][0]&.dig("d")][s["i"][0]&.dig("p")]={}
+          
+          @all_rooms.add(s["i"][0]&.dig("l"))
           data[s["i"][0]&.dig("d")][s["i"][0]&.dig("p")][s["i"][0]&.dig("l")] =s["b"]
         rescue
           dropped+=1
