@@ -32,6 +32,12 @@ private
     today + diff
   end
   
+  # def day_of_week(date)
+  #   day_index = date.wday
+  #   day_names = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
+  #   day_names[day_index]
+  # end
+  
   def search_params?
     params.key?(:date) and params.key?(:period)
   end
@@ -71,6 +77,19 @@ private
         end
       end
     end
+    
+    today = Date.today
+    today_wday = today.wday
+    days_to_subtract = today_wday == 0 ? 6 : today_wday - 1
+    week_start = today - days_to_subtract
+    week_end = week_start + 6
+
+    Booking.all().each do |booking|
+      if booking.date > week_start and booking.date < week_end
+        data[booking.date.wday][booking.period][booking.room_number] = booking.user.id
+      end
+    end
+    # debugger
     return data
   end
 
