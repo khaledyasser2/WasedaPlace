@@ -11,17 +11,21 @@
   <button type="submit">Submit</button>
 <% end %>
 
-<h2>Available Rooms</h2>
-<% if @available_rooms.any? %>
-  <% @available_rooms.each do |room| %>
-    <p><%= room %> -
-    <%= form_tag booking_index_path, method: :post do %>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <%= hidden_field_tag :room, room %>
-      <%= hidden_field_tag :period, @selected[:period] %>
-      <%= hidden_field_tag :date, @selected[:date] %>
-      <%= submit_tag "book" %>
+<% if @available_rooms.any?%>
+  <% if session[:user_id].present? %>
+    <h2>Available Rooms</h2>
+    <% @available_rooms.each do |room| %>
+      <p><%= room %> -
+      <%= form_tag booking_index_path, method: :post do %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :room, room %>
+        <%= hidden_field_tag :period, @selected[:period] %>
+        <%= hidden_field_tag :date, @selected[:date] %>
+        <%= submit_tag "book" %>
+      <% end %>
+      </p>
     <% end %>
-    </p>
+  <% else %>
+    please log in
   <% end %>
 <% end %>
