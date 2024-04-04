@@ -2,6 +2,11 @@
 
   <div class="container">
     <%= link_to "sample app", root_path, id: "logo" %>
+    <% if logged_in? %>
+      <div>Logged in as <% @current_user.name %></div>
+    <% else %>
+      <p>Not logged in</p>
+    <% end %>
     <nav>
       <div class="navbar-header">
         <button id="hamburger" type="button" class="navbar-toggle collapsed">

@@ -17,7 +17,7 @@
     <% @available_rooms.each do |room| %>
       <p><%= room %> -
       <%= form_tag booking_index_path, method: :post do %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%# <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= hidden_field_tag :room, room %>
         <%= hidden_field_tag :period, @selected[:period] %>
         <%= hidden_field_tag :date, @selected[:date] %>
