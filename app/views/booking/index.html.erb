@@ -12,7 +12,7 @@
 <% end %>
 
 <% if @available_rooms.any?%>
-  <% if session[:user_id].present? %>
+  <% if logged_in? %>
     <h2>Available Rooms</h2>
     <% @available_rooms.each do |room| %>
       <p><%= room %> -
