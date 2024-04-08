@@ -4,5 +4,7 @@ class Booking < ApplicationRecord
   validates :date, presence: true
   validates :period, presence: true
   validates :room_number, presence: true
+
+  validates :date, uniqueness: { scope: [:period, :room_number] }
   
 end

@@ -22,6 +22,12 @@ class BookingController < ApplicationController
   def create
     @user=User.find(session[:user_id])
     booking=Booking.create(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
+    if booking.valid?
+      p "saved"
+    else
+      # debugger
+      p booking.errors.messages
+    end
   end
 
 private
@@ -93,7 +99,7 @@ private
     week_end = week_start + 6
 
     Booking.all().each do |booking|
-      if booking.date > week_start and booking.date < week_end
+      if booking.date >= week_start and booking.date < week_end
         data[booking.date.wday][booking.period][booking.room_number] = booking.user.id
       end
     end
