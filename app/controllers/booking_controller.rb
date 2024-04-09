@@ -5,16 +5,12 @@ class BookingController < ApplicationController
     # file_path = Rails.root.join('public', 'data', 'ART.json')
     # class_schedules = JSON.parse(File.read(file_path))
     class_schedules=read_all_json_from_directory(Rails.root.join('public', 'data'))
-    @days=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     day_map = {"Monday" => 1, "Tuesday" => 2, "Wednesday" => 3, "Thursday" => 4, "Friday" => 5}
-    @periods=[1,2,3,4,5,6,7]
     @taken_timeslots = process_schedules_for_availability(class_schedules)
     @available_rooms=[]
     # debugger
     if search_params?
       @available_rooms=@all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].keys).to_a
-      # @available_rooms=@taken_timeslots[day_map[params[:date]]][params[:period].to_i].keys
-      # debugger
       @selected={date: params[:date], period: params[:period]}
     end
   end
@@ -23,11 +19,11 @@ class BookingController < ApplicationController
     @user=User.find(session[:user_id])
     booking=Booking.create(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
     if booking.valid?
-      p "saved"
+      flash[:notice] = "Booking created successfully!"
     else
-      # debugger
-      p booking.errors.messages
+      flash[:alert] = "Error making this booking"
     end
+    redirect_to booking_index_path
   end
 
 private
