@@ -16,6 +16,7 @@
 <% if @available_rooms&.any?%>
   <% if logged_in? %>
     <h2>Available Rooms</h2>
+    <div class="rooms">
     <% @available_rooms.each do |room| %>
       <p><%= room %> -
       <%= form_tag booking_index_path, method: :post do %>
@@ -27,6 +28,7 @@
       <% end %>
       </p>
     <% end %>
+    </div>
   <% else %>
     please log in
   <% end %>

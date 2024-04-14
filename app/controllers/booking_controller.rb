@@ -16,12 +16,16 @@ class BookingController < ApplicationController
   end
 
   def create
-    @user=User.find(session[:user_id])
-    booking=Booking.create(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
-    if booking.valid?
-      flash[:notice] = "Booking created successfully!"
+    if session[:user_id].nil?
+      flash[:alert] = "You need to log in to book"
     else
-      flash[:alert] = "Error making this booking"
+      @user=User.find(session[:user_id])
+      booking=Booking.create(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
+      if booking.valid?
+        flash[:notice] = "Booking created successfully!"
+      else
+        flash[:alert] = "Error making this booking"
+      end
     end
     redirect_to booking_index_path
   end
