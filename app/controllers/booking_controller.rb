@@ -10,6 +10,7 @@ class BookingController < ApplicationController
     @available_rooms=[]
     # debugger
     if search_params?
+      # debugger
       @available_rooms=@all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].keys).to_a
       @selected={date: params[:date], period: params[:period]}
     end
@@ -21,6 +22,7 @@ class BookingController < ApplicationController
     else
       @user=User.find(session[:user_id])
       booking=Booking.create(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
+      # debugger
       if booking.valid?
         flash[:notice] = "Booking created successfully!"
       else
@@ -100,7 +102,8 @@ private
 
     Booking.all().each do |booking|
       if booking.date >= week_start and booking.date < week_end
-        data[booking.date.wday][booking.period][booking.room_number] = booking.user.id
+        data[booking.date.wday][booking.period][booking.room_number] ||= []
+        data[booking.date.wday][booking.period][booking.room_number] << booking.user.id
       end
     end
     # debugger
