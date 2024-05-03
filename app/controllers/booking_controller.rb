@@ -10,8 +10,19 @@ class BookingController < ApplicationController
     @available_rooms=[]
     # debugger
     if search_params?
-      # debugger
-      @available_rooms=@all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].keys).to_a
+      # @available_rooms=@all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].select { |key, value| value.is_a?(String) }.keys).to_a
+      # @taken_by_other_users = @all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].select { |key, value| value.is_a?(Array) }.keys).to_a
+      @available_rooms = @all_rooms.each_with_object({}) do |room, available_rooms|
+        timeslot = @taken_timeslots[day_map[params[:date]]][params[:period].to_i]
+        if timeslot && timeslot.has_key?(room) && timeslot[room].is_a?(Array)
+          # if :user_id not in timeslot[room]
+            available_rooms[room] = timeslot[room]
+          # end
+        elsif timeslot && !timeslot.has_key?(room)
+          available_rooms[room] = nil
+        end
+      end
+      debugger
       @selected={date: params[:date], period: params[:period]}
     end
   end

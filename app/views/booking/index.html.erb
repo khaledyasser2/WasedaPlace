@@ -17,7 +17,7 @@
   <% if logged_in? %>
     <h2>Available Rooms</h2>
     <div class="rooms">
-    <% @available_rooms.each do |room| %>
+    <% @available_rooms.each do |room, users| %>
       <p><%= room %> -
       <%= form_tag booking_index_path, method: :post do %>
         <%# <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -25,6 +25,9 @@
         <%= hidden_field_tag :period, @selected[:period] %>
         <%= hidden_field_tag :date, @selected[:date] %>
         <%= submit_tag "book" %>
+      <% end %>
+      <% if users != nil  %>
+        <%= "There are already users.size users here" %>
       <% end %>
       </p>
     <% end %>
