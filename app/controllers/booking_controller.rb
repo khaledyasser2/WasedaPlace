@@ -15,14 +15,14 @@ class BookingController < ApplicationController
       @available_rooms = @all_rooms.each_with_object({}) do |room, available_rooms|
         timeslot = @taken_timeslots[day_map[params[:date]]][params[:period].to_i]
         if timeslot && timeslot.has_key?(room) && timeslot[room].is_a?(Array)
-          # if :user_id not in timeslot[room]
+          if !timeslot[room].include?(session[:user_id])
             available_rooms[room] = timeslot[room]
-          # end
+          end
         elsif timeslot && !timeslot.has_key?(room)
           available_rooms[room] = nil
         end
       end
-      debugger
+      # debugger
       @selected={date: params[:date], period: params[:period]}
     end
   end
