@@ -2,8 +2,6 @@ class BookingController < ApplicationController
   
   
   def index
-    # file_path = Rails.root.join('public', 'data', 'ART.json')
-    # class_schedules = JSON.parse(File.read(file_path))
     class_schedules=read_all_json_from_directory(Rails.root.join('public', 'data'))
     day_map = {"Monday" => 1, "Tuesday" => 2, "Wednesday" => 3, "Thursday" => 4, "Friday" => 5}
     @taken_timeslots = process_schedules_for_availability(class_schedules)
@@ -12,9 +10,11 @@ class BookingController < ApplicationController
     if search_params?
       # @available_rooms=@all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].select { |key, value| value.is_a?(String) }.keys).to_a
       # @taken_by_other_users = @all_rooms.difference(@taken_timeslots[day_map[params[:date]]][params[:period].to_i].select { |key, value| value.is_a?(Array) }.keys).to_a
+      # debugger
       @available_rooms = @all_rooms.each_with_object({}) do |room, available_rooms|
         timeslot = @taken_timeslots[day_map[params[:date]]][params[:period].to_i]
         if timeslot && timeslot.has_key?(room) && timeslot[room].is_a?(Array)
+          debugger
           if !timeslot[room].include?(session[:user_id])
             available_rooms[room] = timeslot[room]
           end
@@ -32,12 +32,13 @@ class BookingController < ApplicationController
       flash[:alert] = "You need to log in to book"
     else
       @user=User.find(session[:user_id])
-      booking=Booking.create(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
+      booking=Booking.new(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
       # debugger
       if booking.valid?
         flash[:notice] = "Booking created successfully!"
+        booking.save
       else
-        flash[:alert] = "Error making this booking"
+        flash[:alert] = booking.errors.messages[:base][0]
       end
     end
     redirect_to booking_index_path
