@@ -14,7 +14,7 @@ class BookingController < ApplicationController
       @available_rooms = @all_rooms.each_with_object({}) do |room, available_rooms|
         timeslot = @taken_timeslots[day_map[params[:date]]][params[:period].to_i]
         if timeslot && timeslot.has_key?(room) && timeslot[room].is_a?(Array)
-          debugger
+          # debugger
           if !timeslot[room].include?(session[:user_id])
             available_rooms[room] = timeslot[room]
           end
@@ -107,13 +107,12 @@ private
     end
     
     today = Date.today
-    today_wday = today.wday
-    days_to_subtract = today_wday == 0 ? 6 : today_wday - 1
-    week_start = today - days_to_subtract
+    week_start = Date.today.next_week.beginning_of_week
     week_end = week_start + 6
-
+    
+    # debugger
     Booking.all().each do |booking|
-      if booking.date >= week_start and booking.date < week_end
+      if booking.date >= week_start and booking.date <= week_end
         data[booking.date.wday][booking.period][booking.room_number] ||= []
         data[booking.date.wday][booking.period][booking.room_number] << booking.user.id
       end
