@@ -31,8 +31,9 @@ class BookingController < ApplicationController
     if session[:user_id].nil?
       flash[:alert] = "You need to log in to book"
     else
+      debugger
       @user=User.find(session[:user_id])
-      booking=Booking.new(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room])
+      booking=Booking.new(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room], entire_room: params[:entire_room])
       # debugger
       if booking.valid?
         flash[:notice] = "Booking created successfully!"
@@ -113,8 +114,10 @@ private
     # debugger
     Booking.all().each do |booking|
       if booking.date >= week_start and booking.date <= week_end
-        data[booking.date.wday][booking.period][booking.room_number] ||= []
-        data[booking.date.wday][booking.period][booking.room_number] << booking.user.id
+        if not booking.entire_room
+          data[booking.date.wday][booking.period][booking.room_number] ||= []
+          data[booking.date.wday][booking.period][booking.room_number] << booking.user.id
+        end
       end
     end
     # debugger
