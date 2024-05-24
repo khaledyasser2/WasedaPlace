@@ -1,0 +1,190 @@
+.whyWasedaPlace {
+  position: relative;
+  line-height: 64px;
+  font-weight: 300;
+}
+.asiacultureCenterImage {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl) 0 var(--padding-58xl);
+}
+.empty {
+  align-self: stretch;
+  height: 140px;
+  position: relative;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  debug_commit: 1de1738;
+}
+.missingReservationMessage {
+  width: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-base) 0 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  font-size: var(--font-size-181xl);
+  color: var(--gray-6);
+}
+.wheneverYouMiss {
+  flex: 1;
+  position: relative;
+  line-height: 36px;
+  display: inline-block;
+  min-width: 203px;
+}
+.div {
+  align-self: stretch;
+  height: 140px;
+  position: relative;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.wasedaPlaceLogo,
+.wasedaPlaceLogoWrapper,
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.wrapper {
+  width: 120px;
+  flex-direction: column;
+  padding: var(--padding-12xs) 0 0;
+  box-sizing: border-box;
+  min-width: 120px;
+  font-size: var(--font-size-181xl);
+  color: var(--gray-6);
+}
+.wasedaPlaceLogo,
+.wasedaPlaceLogoWrapper {
+  flex-shrink: 0;
+}
+.wasedaPlaceLogo {
+  align-self: stretch;
+  flex-direction: row;
+  gap: var(--gap-57xl);
+  debug_commit: 1de1738;
+}
+.wasedaPlaceLogoWrapper {
+  width: 516px;
+  flex-direction: column;
+  padding: var(--padding-3xs) var(--padding-6xs) 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.ourGoalIs {
+  width: 420px;
+  position: relative;
+  line-height: 36px;
+  display: inline-block;
+  flex-shrink: 0;
+  debug_commit: 1de1738;
+  max-width: 100%;
+}
+.frame {
+  align-self: stretch;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: var(--padding-lgi) 0 var(--padding-7xs);
+  box-sizing: border-box;
+  gap: var(--gap-38xl);
+  font-size: var(--font-size-3xl);
+  color: var(--gray-1);
+}
+.frame,
+.homepageBackground,
+.reserveNowBtn {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.reserveNowBtn {
+  width: 1069px;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-27xl);
+}
+.homepageBackground {
+  width: 1339px;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 var(--padding-xl) var(--padding-70xl-5);
+  box-sizing: border-box;
+  text-align: left;
+  font-size: var(--font-size-45xl);
+  color: var(--gray-4);
+  font-family: var(--font-roboto);
+}
+@media screen and (max-width: 1125px) {
+  .frame {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .whyWasedaPlace {
+    font-size: var(--font-size-32xl);
+    line-height: 51px;
+  }
+  .asiacultureCenterImage {
+    padding-left: var(--padding-19xl);
+    box-sizing: border-box;
+  }
+  .div,
+  .empty {
+    font-size: var(--font-size-61xl);
+  }
+}
+@media screen and (max-width: 750px) {
+  .wasedaPlaceLogo {
+    gap: var(--gap-19xl);
+  }
+  .frame {
+    gap: var(--gap-9xl);
+  }
+  .reserveNowBtn {
+    gap: var(--gap-4xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .whyWasedaPlace {
+    font-size: var(--font-size-19xl);
+    line-height: 38px;
+  }
+  .empty {
+    font-size: var(--font-size-31xl);
+  }
+  .wheneverYouMiss {
+    font-size: var(--font-size-lg);
+    line-height: 29px;
+  }
+  .div {
+    font-size: var(--font-size-31xl);
+  }
+  .wrapper {
+    flex: 1;
+  }
+  .wasedaPlaceLogo {
+    flex-wrap: wrap;
+    gap: var(--gap-lgi);
+  }
+  .ourGoalIs {
+    font-size: var(--font-size-lg);
+    line-height: 29px;
+  }
+  .homepageBackground {
+    padding-bottom: var(--padding-39xl);
+    box-sizing: border-box;
+  }
+}

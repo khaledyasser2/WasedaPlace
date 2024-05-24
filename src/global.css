@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-roboto: Roboto;
+  --font-roboto-flex: "Roboto Flex";
+
+  /* font sizes */
+  --font-size-6xl: 25px;
+  --font-size-3xl: 22px;
+  --font-size-lg: 18px;
+  --font-size-181xl: 200px;
+  --font-size-31xl: 50px;
+  --font-size-61xl: 80px;
+  --font-size-45xl: 64px;
+  --font-size-19xl: 38px;
+  --font-size-32xl: 51px;
+  --font-size-5xl: 24px;
+  --font-size-xs: 12px;
+  --font-size-13xl: 32px;
+  --font-size-29xl: 48px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-burlywood: #e6c586;
+  --gray-1: #333;
+  --gray-6: #f2f2f2;
+  --gray-4: #bdbdbd;
+  --color-gray: #fafafa;
+
+  /* Gaps */
+  --gap-27xl: 46px;
+  --gap-4xl: 23px;
+  --gap-38xl: 57px;
+  --gap-9xl: 28px;
+  --gap-57xl: 76px;
+  --gap-19xl: 38px;
+  --gap-lgi: 19px;
+  --gap-26xl: 45px;
+  --gap-3xl: 22px;
+  --gap-xl: 20px;
+  --gap-60xl: 79px;
+  --gap-52xl: 71px;
+  --gap-base: 16px;
+  --gap-477xl: 496px;
+  --gap-10xs: 3px;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-166xl-5: 185.5px;
+  --padding-11xs: 2px;
+  --padding-23xl: 42px;
+  --padding-12xs: 1px;
+  --padding-70xl-5: 89.5px;
+  --padding-39xl: 58px;
+  --padding-lgi: 19px;
+  --padding-7xs: 6px;
+  --padding-3xs: 10px;
+  --padding-6xs: 7px;
+  --padding-base: 16px;
+  --padding-58xl: 77px;
+  --padding-19xl: 38px;
+  --padding-30xl-5: 49.5px;
+  --padding-13xl: 32px;
+  --padding-70xl: 89px;
+  --padding-31xl: 50px;
+  --padding-50xl: 69px;
+  --padding-17xl: 36px;
+  --padding-111xl: 130px;
+  --padding-4xl: 23px;
+
+  /* Border radiuses */
+  --br-xl: 20px;
+  --br-3xs: 10px;
+}

@@ -1,0 +1,181 @@
+.bookNow,
+.icon {
+  position: relative;
+}
+.icon {
+  height: 34px;
+  width: 216px;
+  object-fit: cover;
+}
+.bookNow {
+  margin-top: -11px;
+  line-height: 64px;
+  display: inline-block;
+  min-width: 69px;
+}
+.bookNowWrapper,
+.confirmationDialog,
+.parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.bookNowWrapper {
+  height: 43px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-burlywood);
+  overflow: hidden;
+  justify-content: flex-start;
+  padding: 0 30px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.confirmationDialog,
+.parent {
+  max-width: 100%;
+}
+.parent {
+  width: 1123px;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.confirmationDialog {
+  width: 1405px;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  box-sizing: border-box;
+}
+.about {
+  position: relative;
+  line-height: 64px;
+  font-weight: 300;
+}
+.aboutWrapper,
+.exploreTheRooms {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+.aboutWrapper {
+  width: 387px;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0 3px 0 0;
+  box-sizing: border-box;
+}
+.exploreTheRooms {
+  width: 386px;
+  position: relative;
+  font-size: var(--font-size-5xl);
+  line-height: 33px;
+  font-weight: 300;
+  color: var(--color-black);
+  text-align: center;
+  align-items: center;
+}
+.descriptionBox,
+.exploreRooms {
+  display: flex;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.exploreRooms {
+  width: 1129px;
+  background-color: var(--color-gray);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 86.1px var(--padding-xl) 136.2px;
+  gap: 35.7px;
+}
+.descriptionBox {
+  width: 1399px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl) var(--padding-30xl-5);
+  text-align: left;
+  font-size: var(--font-size-45xl);
+  color: var(--gray-4);
+  font-family: var(--font-roboto);
+}
+.wasedaplace {
+  flex: 1;
+  position: relative;
+  line-height: 64px;
+  display: inline-block;
+  max-width: 100%;
+}
+.homepage,
+.wasedaLogo {
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  font-family: var(--font-roboto);
+}
+.wasedaLogo {
+  align-self: stretch;
+  background-color: var(--color-black);
+  flex-direction: row;
+  padding: 94.5px 0;
+  max-width: 100%;
+  text-align: center;
+  font-size: var(--font-size-6xl);
+  color: var(--color-white);
+}
+.homepage {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-white);
+  flex-direction: column;
+  padding: 29.5px 0 0;
+  gap: 190.5px;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: 15px;
+  color: var(--color-black);
+}
+@media screen and (max-width: 1025px) {
+  .about {
+    font-size: var(--font-size-32xl);
+    line-height: 51px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .descriptionBox {
+    padding-bottom: var(--padding-13xl);
+    box-sizing: border-box;
+  }
+  .homepage {
+    gap: 95px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .parent {
+    flex-wrap: wrap;
+  }
+  .about {
+    font-size: var(--font-size-19xl);
+    line-height: 38px;
+  }
+  .exploreTheRooms {
+    font-size: 19px;
+    line-height: 26px;
+  }
+  .exploreRooms {
+    gap: 18px;
+    padding-top: 56px;
+    padding-bottom: var(--padding-70xl);
+    box-sizing: border-box;
+  }
+  .wasedaplace {
+    font-size: 20px;
+    line-height: 51px;
+  }
+  .homepage {
+    gap: 48px;
+  }
+}
