@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from 'next/link';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,30 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {/* Header */}
+        <div className="bg-white text-gray-900 font-sans">
+          <header className="flex justify-between items-center p-6">
+            <div className="flex items-center space-x-2">
+              <i className="fas fa-map-marker-alt text-gray-900"></i>
+              <Link href="/" passHref>
+                <button className="flex items-center space-x-2 focus:outline-none">
+                    <img src="/images/wasedaplacelogo.png" alt="Logo" width={40} height={40} className="rounded-full" />
+                    <span className="font-semibold text-xl">Waseda Place</span>
+                </button>
+              </Link>
+            </div>
+            <Link href="/booking" passHref>
+              <button className="booking-top-button">Book Now</button>
+            </Link>  
+          </header>
+        </div>
+        {children}
+        {/* Footer */}
+        <footer className="bg-black text-white text-center py-8 px-8">
+          <p>@WasedaPlace</p>
+        </footer>
+        </body>
     </html>
   );
 }
