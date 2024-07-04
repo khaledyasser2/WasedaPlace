@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
               <i className="fas fa-map-marker-alt text-gray-900"></i>
               <Link href="/" passHref>
                 <button className="flex items-center space-x-2 focus:outline-none">
-                    <img src="/images/wasedaplacelogo.png" alt="Logo" width={40} height={40} className="rounded-full" />
+                    <img src="/images/wasedaplacelogo.png" alt="Logo" width={30} height={30} className="rounded-full" />
                     <span className="font-semibold text-xl">Waseda Place</span>
                 </button>
               </Link>
@@ -33,10 +33,10 @@ export default function RootLayout({ children }) {
         </div>
         {children}
         {/* Footer */}
-        <footer className="bg-black text-white text-center py-8 px-8">
+        <footer className="bg-gray-600 text-white text-center py-8 px-8">
           <p>@WasedaPlace</p>
         </footer>
-        </body>
+      </body>
     </html>
   );
 }
