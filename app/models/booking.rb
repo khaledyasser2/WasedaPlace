@@ -16,7 +16,7 @@ class Booking < ApplicationRecord
       if Booking.where(date: date, period: period, room_number: room_number, user_id: user_id).present?
         errors.add(:base, "You already booked this time!")
         # debugger
-      elif Booking.where(date: date, period: period, room_number: room_number, entire_room: true).present?
+      elsif Booking.where(date: date, period: period, room_number: room_number, entire_room: true).present?
         errors.add(:base, "Someone else already booked this entire room")
       end
     end
