@@ -31,10 +31,8 @@ class BookingController < ApplicationController
     if session[:user_id].nil?
       flash[:alert] = "You need to log in to book"
     else
-      debugger
       @user=User.find(session[:user_id])
-      booking=Booking.new(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room], entire_room: params[:entire_room])
-      # debugger
+      booking=Booking.new(user_id: session[:user_id], date: next_weekday(params[:date]), period: params[:period], room_number: params[:room], entire_room: params[:entire_room][:entire_room]=="1")
       if booking.valid?
         flash[:notice] = "Booking created successfully!"
         booking.save
@@ -67,7 +65,7 @@ private
   end
 
   def booking_params
-    params.require(:booking).permit(:date, :period, :room_number)  # Replace with allowed booking attributes
+    params.require(:booking).permit(:date, :period, :room_number, :entire_room)  # Replace with allowed booking attributes
   end
 
   def process_schedules_for_availability(schedules)

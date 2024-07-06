@@ -26,8 +26,8 @@
         <%= hidden_field_tag :date, @selected[:date] %>
         <div>
           <label for="entire_room">Do you mind other users booking this room?</label>
-          <%= check_box_tag :entire_room, "1" %>  
-          <%= hidden_field_tag :entire_room, "0" %>
+          <%= check_box :entire_room, "entire_room"%>
+          <%# <%= hidden_field_tag :entire_room, "0" %>
         </div>
         <%= submit_tag "book" %>
       <% end %>
