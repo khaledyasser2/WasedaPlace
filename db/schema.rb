@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_19_214927) do
     t.date "date", null: false
     t.integer "period", null: false
     t.string "room_number", null: false
+    t.boolean "entire_room", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bookings_on_user_id"
