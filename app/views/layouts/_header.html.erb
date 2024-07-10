@@ -19,42 +19,24 @@
 </div>
 
   <div class="container">
-    <%# <%= link_to "sample app", root_path, id: "logo" %>
-    <%# <% if logged_in? %>
-    <%#   <p><%= "Logged in as #{@current_user.name}" %></p>
-    <%# <% else %>
-    <%#   <p>Not logged in</p>
-    <%# <% end %>
-    <nav>
-      <!-- <div class="navbar-header"> -->
-      <!--   <button id="hamburger" type="button" class="navbar-toggle collapsed"> -->
-      <!--     <span class="sr-only">Toggle navigation</span> -->
-      <!--     <span class="icon-bar"></span> -->
-      <!--     <span class="icon-bar"></span> -->
-      <!--     <span class="icon-bar"></span> -->
-      <!--   </button> -->
-      <!-- </div> -->
-      <ul id="navbar-menu" class="nav navbar-nav navbar-right
-                                      collapse navbar-collapse">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
-        <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" id="account" class="dropdown-toggle">
-              Account <b class="caret"></b>
-            </a>
-          <ul id="dropdown-menu" class="">
-            <li><%= link_to "Profile", current_user %></li>
-            <!-- <li><%= link_to "Settings", edit_user_path(current_user) %></li> -->
-            <li><%= link_to "Book", booking_index_path %></li>
-            <!-- <li class="divider"></li> -->
-            <li><%= link_to "Log out", logout_path, data: { "turbo": true, "turbo-method": :delete } %></li>
-          </ul>
-        </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+    <!-- <li><%= link_to "Home", root_path %></li> -->
+    <!-- <li><%= link_to "Help", help_path %></li> -->
+      <% if logged_in? %>
+          <!-- <a href="#" id="account" class="dropdown-toggle"> -->
+          <!--   Account <b class="caret"></b> -->
+          <!-- </a> -->
+        <ul id="dropdown-menu" class="">
+          <li><%= link_to "Profile", current_user %></li>
+          <!-- <li><%= link_to "Settings", edit_user_path(current_user) %></li> -->
+          <li><%= link_to "Book", booking_index_path %></li>
+          <!-- <li class="divider"></li> -->
+          <li><%= link_to "Log out", logout_path, data: { "turbo": true, "turbo-method": :delete } %></li>
+        </ul>
+      </li>
+      <% else %>
+        <li><%= link_to "Log in", login_path %></li>
+      <% end %>
+    </ul>
+    <!-- </nav> -->
    </div>
 </header>

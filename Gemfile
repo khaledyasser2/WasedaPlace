@@ -12,6 +12,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "bootsnap", require: false
 gem "bcrypt"
+gem 'tailwindcss-rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

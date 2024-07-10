@@ -116,3 +116,12 @@ body {
     text-wrap: balance;
   }
 }
+
+a {
+  color: #0000EE;  /* Default link color (blue) */
+  text-decoration: none;  /* Remove underline decoration */
+  padding: 5px 10px;  /* Add some padding */
+  border: 1px solid transparent; /* Create a subtle border */
+  transition: all 0.3s ease-in-out; /* Smooth transition on hover */
+  /* class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" */
+}
