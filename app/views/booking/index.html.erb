@@ -1,17 +1,81 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Room</title>
+  <style>
+    .bg-white {
+      background-color: white;
+    }
+    .text-gray-900 {
+      color: #212529;
+    }
+    .font-sans {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex-col {
+      flex-direction: column;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .text-4xl {
+      font-size: 2.25rem;
+    }
+    .font-bold {
+      font-weight: bold;
+    }
+    .full-width-line {
+      width: 100%;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+    .dropdown-container {
+      margin-bottom: 10px;
+    }
+    .dropdown-menu {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .booking-button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
 <% periods=[1,2,3,4,5,6,7] %>
 <% days=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] %>
 <h1>Select Date and Period</h1>
-<%= form_tag(booking_index_path, method: "get") do %>
-  <div>
-    <label for="date">Date:</label>
-    <%= select_tag :date, options_for_select(days), include_blank: true %>
+<body>
+  <div class="bg-white text-gray-900 font-sans">
+    <main class="flex flex-col items-center">
+      <h1 class="text-4xl font-bold">Book Your Room</h1>
+      <hr class="full-width-line">
+
+      <div class="dropdown-container">
+        <%= form_tag(booking_index_path, method: "get") do %>
+          <div>
+            <label for="date">Date:</label>
+            <%# <%= select_tag :date, options_for_select(days), include_blank: true %>
+            <%= select_tag :date, options_for_select(days), class: 'dropdown-menu', value: 'Day'%>
+          </div>
+          <div>
+            <label for="period">Period:</label>
+            <%= select_tag :period, options_for_select(periods), class: 'dropdown-menu', value: 'Period' %>
+          </div>
+          <button type="submit" class="booking-button" style="">Submit</button>
+        <% end %>
+      </div>
+    </main>
   </div>
-  <div>
-    <label for="period">Period:</label>
-    <%= select_tag :period, options_for_select(periods), include_blank: true %>
-  </div>
-  <button type="submit">Submit</button>
-<% end %>
+</body>
 
 <% if @available_rooms&.any?%>
   <% if logged_in? %>
