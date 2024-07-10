@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+.booking-button {
+  background-color: #E6C586;
+  color: #000000; 
+  padding: 10px 20px; 
+  border-radius: 9999px; 
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  width: 235px;
+  height: 58px;
+  
+}
+
+.booking-button:hover,
+.booking-button:focus {
+  background-color: #F1C40F; 
+  color: white; 
+  outline: none; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+.booking-top-button {
+  background-color: #E6C586;
+  color: #000000; 
+  padding: 4px 9px; 
+  border-radius: 9999px; 
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  width: 135px;
+  height: 35px;
+  
+}
+
+.booking-top-button:hover,
+.booking-top-button:focus {
+  background-color: #F1C40F; 
+  color: white; 
+  outline: none; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+.full-width-line {
+  border: none;
+  border-top: 1px solid #000000; 
+  margin: 20px 0; 
+  width: 70%;
+  margin-bottom: 100px;
+}
+
+.dropdown-menu {
+  width: 200%;
+  height: 20%;
+  padding: 0.5rem; 
+  margin-bottom: 1rem; 
+  font-size: 1rem; 
+  line-height: 1.5; 
+  border: 1px solid #F3F3F3;
+  border-radius: 999px;
+  appearance: none; 
+  background-color: #F3F3F3; 
+  text-align-last: center;
+  text-align: center;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; 
+  margin-bottom: 50px;
+}
+
+.dropdown-menu:hover,
+.dropdown-menu:focus {
+  border-color: #aaa;
+  outline: none; 
+}
+
+.dropdown-container {
+  position: relative;
+  display: flex;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+/* @media (prefers-color-scheme: dark) { */
+/*   :root { */
+/*     --foreground-rgb: 255, 255, 255; */
+/*     --background-start-rgb: 0, 0, 0; */
+/*     --background-end-rgb: 0, 0, 0; */
+/*   } */
+/* } */
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

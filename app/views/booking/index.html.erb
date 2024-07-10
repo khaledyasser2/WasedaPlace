@@ -93,7 +93,7 @@
           <%= check_box :entire_room, "entire_room"%>
           <%# <%= hidden_field_tag :entire_room, "0" %>
         </div>
-        <%= submit_tag "book" %>
+        <%= submit_tag "book", class: "booking-button" %>
       <% end %>
       <% if users != nil  %>
         <%= "There are already #{users.size} users here" %>

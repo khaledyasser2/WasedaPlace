@@ -1,21 +1,39 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 
-  <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
-    <% if logged_in? %>
-      <p><%= "Logged in as #{@current_user.name}" %></p>
-    <% else %>
-      <p>Not logged in</p>
-    <% end %>
-    <nav>
-      <div class="navbar-header">
-        <button id="hamburger" type="button" class="navbar-toggle collapsed">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+<div class="bg-white text-gray-900">
+  <header class="flex justify-between items-center p-6">
+    <div class="flex items-center space-x-2">
+      <i class="fas fa-map-marker-alt text-gray-900"></i>
+      <a href="/">
+        <button class="flex items-center space-x-2 focus:outline-none">
+          <img src="/wasedaplacelogo.png" alt="Logo" width="30" height="30" class="rounded-full">
+          <span class="font-semibold text-xl">Waseda Place</span>
         </button>
-      </div>
+      </a>
+    </div>
+    <a href="<%= booking_index_path %>">
+      <%# <%= link_to "Book now", booking_index_path, class: "booking-top-button" %>
+      <button class="booking-top-button">Book Now</button>
+    </a>
+  </header>
+</div>
+
+  <div class="container">
+    <%# <%= link_to "sample app", root_path, id: "logo" %>
+    <%# <% if logged_in? %>
+    <%#   <p><%= "Logged in as #{@current_user.name}" %></p>
+    <%# <% else %>
+    <%#   <p>Not logged in</p>
+    <%# <% end %>
+    <nav>
+      <!-- <div class="navbar-header"> -->
+      <!--   <button id="hamburger" type="button" class="navbar-toggle collapsed"> -->
+      <!--     <span class="sr-only">Toggle navigation</span> -->
+      <!--     <span class="icon-bar"></span> -->
+      <!--     <span class="icon-bar"></span> -->
+      <!--     <span class="icon-bar"></span> -->
+      <!--   </button> -->
+      <!-- </div> -->
       <ul id="navbar-menu" class="nav navbar-nav navbar-right
                                       collapse navbar-collapse">
         <li><%= link_to "Home", root_path %></li>
@@ -25,7 +43,7 @@
             <a href="#" id="account" class="dropdown-toggle">
               Account <b class="caret"></b>
             </a>
-          <ul id="dropdown-menu" class="dropdown-menu">
+          <ul id="dropdown-menu" class="">
             <li><%= link_to "Profile", current_user %></li>
             <!-- <li><%= link_to "Settings", edit_user_path(current_user) %></li> -->
             <li><%= link_to "Book", booking_index_path %></li>
