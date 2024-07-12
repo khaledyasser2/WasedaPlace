@@ -18,7 +18,7 @@
   transition: background-color 0.3s ease, color 0.3s ease; 
   width: 235px;
   height: 58px;
-  
+
 }
 
 .booking-button:hover,
@@ -110,4 +110,47 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 80vh;
+  background-color: #f0f0f0;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width:100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
 }
