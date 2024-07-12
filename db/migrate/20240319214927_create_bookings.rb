@@ -5,6 +5,7 @@ class CreateBookings < ActiveRecord::Migration[7.0]
       t.date :date, null: false
       t.integer :period, null: false
       t.string :room_number, null: false
+      t.boolean :entire_room, default: false, null: false
       t.timestamps
     end
   end
