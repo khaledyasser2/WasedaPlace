@@ -20,4 +20,13 @@ class UserMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+
+  def booking_confirmation(user)
+    @greeting = "Hi"
+    @user=user
+    @booking=user.bookings.last
+    p user.bookings
+    p @booking.room_number
+    mail to: user.email, subject:"Booking Confirmation"
+  end
 end

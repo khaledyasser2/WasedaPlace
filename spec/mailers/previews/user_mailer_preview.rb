@@ -13,4 +13,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/booking_confirmation
+  def booking_confirmation
+    user=User.third
+    UserMailer.booking_confirmation(user)
+  end
+
 end
