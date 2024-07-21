@@ -21,12 +21,10 @@ class UserMailer < ApplicationMailer
     mail to: "to@example.org"
   end
 
-  def booking_confirmation(user)
+  def booking_confirmation(user, booking)
     @greeting = "Hi"
     @user=user
-    @booking=user.bookings.last
-    p user.bookings
-    p @booking.room_number
+    @booking=booking
     mail to: user.email, subject:"Booking Confirmation"
   end
 end

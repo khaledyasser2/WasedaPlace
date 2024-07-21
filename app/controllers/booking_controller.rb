@@ -36,6 +36,7 @@ class BookingController < ApplicationController
       if booking.valid?
         flash[:notice] = "Booking created successfully!"
         booking.save
+        UserMailer.booking_confirmation(@user, booking).deliver_now
       else
         flash[:alert] = booking.errors.messages[:base][0]
       end
