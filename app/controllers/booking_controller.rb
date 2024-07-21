@@ -116,6 +116,9 @@ private
         if not booking.entire_room
           data[booking.date.wday][booking.period][booking.room_number] ||= []
           data[booking.date.wday][booking.period][booking.room_number] << booking.user.id
+        elsif booking.user_id=session[:user_id]
+          data[booking.date.wday][booking.period][booking.room_number] ||= []
+          data[booking.date.wday][booking.period][booking.room_number] << booking.user.id
         end
       end
     end
