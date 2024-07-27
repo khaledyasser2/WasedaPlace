@@ -54,7 +54,7 @@
   border: none;
   border-top: 1px solid #000000; 
   margin: 20px 0; 
-  width: 70%;
+  width: 50%;
   margin-bottom: 100px;
 }
 
@@ -85,7 +85,7 @@
   position: relative;
   display: flex;
   width: 40%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
