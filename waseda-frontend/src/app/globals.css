@@ -118,10 +118,10 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 80vh;
-  background-color: #f0f0f0;
   padding-top: 100px;
   padding-bottom: 100px;
-  width:100%;
+  width:auto;
+  background-color: #f0f0f0;
 }
 
 .form {
