@@ -13,7 +13,7 @@ export default function Booking() {
     
 
     // Function to check if all dropdowns have selections
-    const isFormComplete = purpose && buildingNumber && room && date && period;
+    const isFormComplete = buildingNumber && room && date && period;
 
     const router = useRouter();
 
@@ -64,7 +64,12 @@ export default function Booking() {
                     >
                         <option value="">Room</option>
                         {[101, 102, 103, 104, 201, 202, 203, 204, 301, 302, 303, 304, 401, 402, 403, 404].map(num => (
-                            <option key={num} value={num}>{num}</option>
+                            <option key={num} 
+                            value={num}
+                            disabled={[201, 202, 203, 204].includes(num)}
+                            style={{ opacity: [201, 202, 203, 204].includes(num) ? 0.6 : 1 }}>
+                            {num}
+                            </option>
                         ))}
                     </select>
                 </div>
@@ -98,7 +103,7 @@ export default function Booking() {
                 {/* Book Room Button */}
                 <button 
                     className={`booking-button ${!isFormComplete ? 'opacity-60 cursor-not-allowed' : ''}`}
-                    style={{ marginTop: '100px', marginBottom: '100px' }}
+                    style={{ marginTop: '50px', marginBottom: '100px' }}
                     disabled={!isFormComplete}  // Disable button if form is not complete
                     onClick={handleBooking}
                 >
